@@ -6,6 +6,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₽';
+  const priceText = p => (p.from ? 'от ' : '') + fmt(p.price);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const byId = id => S.products.find(p => p.id === id);
   const params = new URLSearchParams(location.search);
@@ -145,6 +146,13 @@
     return p ? { code, amount: Math.round(sum * p.percent / 100), label: p.label } : null;
   }
 
+  // сколько платить сейчас: вся сумма со скидкой или только предоплата за запись
+  function payable(items = cart.items()) {
+    if (S.payDepositOnly) return S.deposit * items.length;
+    const sum = cart.total(items);
+    return sum - (promoDiscount(sum)?.amount || 0);
+  }
+
   function renderCart() {
     const items = cart.items();
     const body = $('.drawer-body'), foot = $('.drawer-foot');
@@ -158,7 +166,7 @@
       return `<div class="cart-item">
         <img src="${p.img}" alt="">
         <div><a href="product.html?id=${p.id}" class="cart-title">${esc(p.title)}</a>
-          <div class="muted small">${i.size ? 'Размер ' + i.size : esc(S.cartMeta(p))}</div>
+          <div class="muted small">${i.size ? (L.sizeLabel || 'Размер') + ': ' + i.size : esc(S.cartMeta(p))}</div>
           ${S.allowQty ? `<div class="qty"><button data-q="${idx}" data-d="-1" aria-label="Меньше">−</button><span>${i.qty}</span><button data-q="${idx}" data-d="1" aria-label="Больше">+</button></div>` : ''}
         </div>
         <div class="cart-right"><b>${fmt(p.price * i.qty)}</b><button class="link small" data-rm="${idx}">Удалить</button></div>
@@ -166,13 +174,13 @@
     }).join('');
     const sum = cart.total(items);
     const disc = promoDiscount(sum);
-    const pay = sum - (disc?.amount || 0);
+    const pay = payable(items);
     foot.innerHTML = `
       ${S.promoCodes ? `<form class="promo-form"><input name="code" placeholder="Промокод" value="${esc(disc?.code || '')}" autocomplete="off"><button class="btn btn-ghost">Применить</button></form>` : ''}
-      <div class="sum-row"><span>Товары</span><span>${fmt(sum)}</span></div>
+      <div class="sum-row"><span>${L.sumLabel || 'Товары'}</span><span>${fmt(sum)}</span></div>
       ${disc ? `<div class="sum-row accent"><span>${esc(disc.label)}</span><span>−${fmt(disc.amount)}</span></div>` : ''}
       ${S.deposit ? `<div class="sum-row"><span>${L.depositLabel}</span><span>${fmt(S.deposit * items.length)}</span></div>` : ''}
-      <div class="sum-row total"><span>Итого</span><span>${fmt(pay)}</span></div>
+      <div class="sum-row total"><span>${L.payLabel || 'Итого'}</span><span>${fmt(pay)}</span></div>
       <button class="btn btn-block checkout-btn">${L.checkout}</button>
       <p class="muted small center">${L.checkoutNote}</p>`;
 
@@ -203,16 +211,17 @@
       <form class="form checkout-form">
         <label>Имя<input name="name" required value="${esc(u.name)}"></label>
         <label>Телефон<input name="phone" type="tel" required value="${esc(u.phone || '')}" placeholder="+7"></label>
+        ${(S.checkoutFields || []).map(fieldHtml).join('')}
         <label>${L.deliveryLabel}<select name="delivery">${S.deliveryOptions.map(o => `<option>${o}</option>`).join('')}</select></label>
         <label>Комментарий<textarea name="comment" rows="2"></textarea></label>
-        <button class="btn btn-block">Подтвердить — ${fmt(cart.total() - (promoDiscount(cart.total())?.amount || 0))}</button>
+        <button class="btn btn-block">Подтвердить — ${fmt(payable())}</button>
       </form>`);
     $('.checkout-form').onsubmit = e => {
       e.preventDefault();
-      const f = e.target, items = cart.items(), sum = cart.total(items);
+      const f = e.target, items = cart.items();
       const order = {
         no: String(Date.now()).slice(-6), date: new Date().toLocaleDateString('ru-RU'),
-        items, total: sum - (promoDiscount(sum)?.amount || 0), status: L.orderNewStatus, delivery: f.delivery.value
+        items, total: payable(items), status: L.orderNewStatus, delivery: [f.delivery.value, ...(S.checkoutFields || []).map(x => f[x.name]?.value)].filter(Boolean).join(' · ')
       };
       store.set('orders', [order, ...store.get('orders', [])]);
       const u2 = user(); u2.bonus = (u2.bonus || 0) + Math.round(order.total * S.bonusRate); store.set('user', u2);
@@ -230,7 +239,7 @@
       <div class="card-body">
         <div class="card-meta">${esc(S.cardMeta(p))}</div>
         <h3><a href="product.html?id=${p.id}">${esc(p.title)}</a></h3>
-        <div class="price">${fmt(p.price)}${p.oldPrice ? `<s>${fmt(p.oldPrice)}</s>` : ''}</div>
+        <div class="price">${priceText(p)}${p.oldPrice ? `<s>${fmt(p.oldPrice)}</s>` : ''}</div>
         <button class="btn btn-sm" data-add="${p.id}">${L.addBtn}</button>
       </div>
     </article>`;
@@ -308,9 +317,9 @@
         <div class="product-info">
           <div class="card-meta">${esc(S.cardMeta(p))}</div>
           <h1>${esc(p.title)}</h1>
-          <div class="price big">${fmt(p.price)}${p.oldPrice ? `<s>${fmt(p.oldPrice)}</s>` : ''}</div>
+          <div class="price big">${priceText(p)}${p.oldPrice ? `<s>${fmt(p.oldPrice)}</s>` : ''}</div>
           ${S.credit ? `<p class="muted">В кредит от <b class="accent-text">${fmt(monthly(p.price * 0.8, S.credit.rate, 60))}/мес</b> · ставка от ${S.credit.rate}%</p>` : ''}
-          ${p.sizes ? `<div id="sizes" class="sizes"><h4>Размер</h4><div class="chips">${p.sizes.map(s => `<button class="chip size" data-size="${s}">${s}</button>`).join('')}</div><button class="link small size-guide">Таблица размеров</button></div>` : ''}
+          ${p.sizes ? `<div id="sizes" class="sizes"><h4>${L.sizeLabel || 'Размер'}</h4><div class="chips">${p.sizes.map(s => `<button class="chip size" data-size="${s}">${s}</button>`).join('')}</div>${S.sizeGuide ? '<button class="link small size-guide">Таблица размеров</button>' : ''}</div>` : ''}
           <div class="product-actions">
             <button class="btn add-main">${L.addBtn}</button>
             <button class="btn btn-ghost fav-main ${fav ? 'on' : ''}" data-fav="${p.id}">${icon.heart} В избранное</button>
@@ -327,11 +336,11 @@
     let size = null;
     $$('.size', el).forEach(b => b.onclick = () => { size = b.dataset.size; $$('.size', el).forEach(x => x.classList.toggle('active', x === b)); });
     $('.add-main', el).onclick = () => {
-      if (p.sizes && !size) { toast('Выберите размер'); $('#sizes').classList.add('shake'); setTimeout(() => $('#sizes').classList.remove('shake'), 500); return; }
+      if (p.sizes && !size) { toast('Выберите ' + (L.sizeLabel || 'размер').toLowerCase()); $('#sizes').classList.add('shake'); setTimeout(() => $('#sizes').classList.remove('shake'), 500); return; }
       cart.add(p.id, size);
     };
     $('.size-guide', el)?.addEventListener('click', () => openModal(S.sizeGuide));
-    $('.extra-action', el)?.addEventListener('click', () => requestForm(S.extraAction.title, p));
+    $('.extra-action', el)?.addEventListener('click', () => requestForm(S.extraAction.title, p, S.extraAction.fields));
     if (S.credit) bindCredit(p);
     bindCards(el);
   }
@@ -361,13 +370,26 @@
     $('.calc-apply').onclick = () => requestForm('Заявка на кредит', p);
   }
 
-  function requestForm(title, p) {
+  function fieldHtml(x) {
+    if (x.type === 'select') return `<label>${x.label}<select name="${x.name}">${x.options.map(o => `<option>${o}</option>`).join('')}</select></label>`;
+    return `<label>${x.label}<input name="${x.name}" type="${x.type || 'text'}" ${x.required ? 'required' : ''} placeholder="${x.placeholder || ''}"></label>`;
+  }
+  // поля формы заявки по ключам: дата, время, гости, мастер, пожелания
+  const REQ_FIELDS = {
+    date: () => ({ label: 'Дата', name: 'date', type: 'date', required: true }),
+    time: () => ({ label: 'Время', name: 'time', type: 'time', required: true }),
+    guests: () => ({ label: 'Гостей', name: 'guests', type: 'select', options: ['1', '2', '3', '4', '5', '6', '7', '8', '10', '12+'] }),
+    master: () => ({ label: 'Мастер', name: 'master', type: 'select', options: ['Любой свободный', ...(S.masters || []).map(m => m.name)] }),
+    comment: () => ({ label: L.commentLabel || 'Пожелания', name: 'comment', placeholder: L.commentPh || '' })
+  };
+
+  function requestForm(title, p, fields) {
     const u = user() || {};
     openModal(`<h3>${title}</h3>${p ? `<p class="muted">${esc(p.title)}</p>` : ''}
       <form class="form req-form">
         <label>Имя<input name="name" required value="${esc(u.name || '')}"></label>
         <label>Телефон<input name="phone" type="tel" required value="${esc(u.phone || '')}" placeholder="+7"></label>
-        ${S.extraAction?.dateField ? '<label>Удобная дата<input name="date" type="date" required></label>' : ''}
+        ${(fields || (S.extraAction?.dateField ? ['date'] : [])).map(k => fieldHtml(REQ_FIELDS[k]())).join('')}
         <label class="check"><input type="checkbox" required> Согласен на обработку персональных данных</label>
         <button class="btn btn-block">Отправить</button>
       </form>`);
@@ -375,7 +397,7 @@
       e.preventDefault();
       const f = e.target;
       const reqs = store.get('requests', []);
-      reqs.unshift({ title, item: p?.title || '', date: f.date?.value || new Date().toISOString().slice(0, 10), status: 'Ожидает звонка' });
+      reqs.unshift({ title, item: p?.title || [f.time?.value, f.guests?.value && f.guests.value + ' гост.', f.master?.value].filter(Boolean).join(' · '), date: f.date?.value || new Date().toISOString().slice(0, 10), status: 'Ожидает звонка' });
       store.set('requests', reqs);
       openModal(`<div class="center"><div class="success-mark">✓</div><h3>Заявка отправлена</h3><p class="muted">Менеджер перезвонит в течение 15 минут в рабочее время.</p></div>`);
     };
@@ -560,7 +582,7 @@
       f.reset();
       openModal(`<div class="center"><div class="success-mark">✓</div><h3>${f.dataset.demo}</h3><p class="muted">Мы свяжемся с вами в ближайшее время.</p></div>`);
     });
-    $$('[data-request]').forEach(b => b.onclick = () => requestForm(b.dataset.request));
+    $$('[data-request]').forEach(b => b.onclick = () => requestForm(b.dataset.request, null, b.dataset.fields?.split(',')));
     $$('[data-faq] button').forEach(b => b.onclick = () => b.parentElement.classList.toggle('open'));
   }
 

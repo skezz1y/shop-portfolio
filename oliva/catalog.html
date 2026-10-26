@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Меню — ОЛИВА</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="theme.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'8'%20fill%3D'%232f4a33'%2F%3E%3Ctext%20x%3D'16'%20y%3D'23'%20font-size%3D'19'%20font-family%3D'Georgia'%20font-weight%3D'700'%20fill%3D'%23e5c98f'%20text-anchor%3D'middle'%3E%D0%9E%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body data-page="catalog">
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head"><span class="eyebrow">Доставка и самовывоз</span><h1>Меню</h1><p>Готовим после заказа. Доставка горячим за 60 минут, бесплатно от 2 000 ₽. Самовывоз — скидка 15% по коду PICKUP15.</p></div>
+  <div class="catalog-layout">
+    <aside id="filters" aria-label="Фильтры"></aside>
+    <div>
+      <div class="catalog-bar">
+        <span class="muted" id="catalog-count"></span>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" id="filters-toggle">Фильтры</button>
+          <select id="sort" aria-label="Сортировка"><option value="popular">Как в меню</option><option value="cheap">Сначала дешевле</option><option value="expensive">Сначала дороже</option></select>
+        </div>
+      </div>
+      <div class="grid grid-3" id="catalog-grid"></div>
+    </div>
+  </div>
+</main>
+<footer id="site-footer"></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

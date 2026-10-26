@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Контакты — VOLT</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="theme.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'8'%20fill%3D'%23111112'%2F%3E%3Ctext%20x%3D'16'%20y%3D'23'%20font-size%3D'19'%20font-family%3D'Arial%20Black'%20font-weight%3D'700'%20fill%3D'%23d4ff3a'%20text-anchor%3D'middle'%3EV%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body data-page="contacts">
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head"><span class="eyebrow">Контакты</span><h1>Шоурум и поддержка</h1><p>Приходите попробовать вкусы перед покупкой — в шоуруме всегда открыты пробники.</p></div>
+  <div class="contacts-grid">
+    <div>
+      <div class="contact-list"><div class="contact-item"><span class="muted small">Шоурум</span><b>Москва, ул. Большая Новодмитровская, 36</b><span class="muted small">Дизайн-завод «Флакон», корпус 2, 1 этаж</span></div><div class="contact-item"><span class="muted small">Часы работы</span><b>Ежедневно 10:00–21:00</b></div><div class="contact-item"><span class="muted small">Телефон</span><b><a href="tel:+74950004848">+7 (495) 000-48-48</a></b><span class="muted small">Подбор питания и статус заказа</span></div><div class="contact-item"><span class="muted small">Почта</span><b><a href="mailto:hello@volt-nutrition.ru">hello@volt-nutrition.ru</a></b><span class="muted small">Опт и сотрудничество с залами</span></div>
+        <div class="contact-item"><span class="muted small">Мессенджеры</span><div class="messengers"><a class="btn btn-ghost btn-sm" href="#" onclick="return false">Telegram</a><a class="btn btn-ghost btn-sm" href="#" onclick="return false">WhatsApp</a><a class="btn btn-ghost btn-sm" href="#" onclick="return false">ВКонтакте</a></div></div>
+      </div>
+      <h3 style="margin-top:32px">Задать вопрос</h3>
+      <form class="form" data-demo="Сообщение отправлено">
+        <label>Имя<input name="name" required></label>
+        <label>Телефон или email<input name="contact" required></label>
+        <label>Тема<select><option>Подбор питания</option><option>Статус заказа</option><option>Возврат и обмен</option><option>Опт для залов</option></select></label>
+        <label>Сообщение<textarea rows="3"></textarea></label>
+        <label class="check"><input type="checkbox" required> Согласие на обработку персональных данных</label>
+        <button class="btn">Отправить</button>
+      </form>
+    </div>
+    <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?ll=37.5880,55.8060&z=16&pt=37.5880,55.8060,pm2rdl" title="Карта проезда" loading="lazy" allowfullscreen></iframe></div>
+  </div>
+  <section class="section" style="padding-top:24px">
+    <h2>Доставка и возврат</h2>
+    <div class="faq"><div class="faq-item" data-faq><button>Сколько идёт доставка?</button><div>По Москве — на следующий день курьером, бесплатно от 3 000 ₽. По России — СДЭК, 2–6 дней. Самовывоз из шоурума — в день заказа.</div></div><div class="faq-item" data-faq><button>Можно ли вернуть протеин?</button><div>Закрытую банку вернём в течение 14 дней. Если не понравился вкус открытой банки — обменяем на другой вкус один раз.</div></div><div class="faq-item" data-faq><button>Как проверить качество?</button><div>На каждой банке есть QR-код партии — он ведёт на протокол испытаний независимой лаборатории.</div></div><div class="faq-item" data-faq><button>Подходит ли протеин девушкам?</button><div>Да, протеин — это просто белок. Для сушки рекомендуем изолят: в нём меньше углеводов и жиров.</div></div></div>
+  </section>
+  <section class="section" style="padding-top:0"><h2>Отзывы</h2><div id="reviews"></div></section>
+</main>
+<footer id="site-footer"></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

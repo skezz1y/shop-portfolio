@@ -129,6 +129,8 @@
   .card-body h3{font-size:1.4rem;margin-bottom:4px}
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
   .tags span{font-size:.8rem;font-weight:600;padding:5px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:rgba(255,255,255,.5)}
+  /* первые два проекта крупно, остальные по три в ряд */
+  @media(min-width:900px){.projects{grid-template-columns:repeat(6,1fr)}.projects .card{grid-column:span 2}.projects .card:nth-child(-n+2){grid-column:span 3}.projects .card:nth-child(n+3) .card-body h3{font-size:1.2rem}}
   .open{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:700;border-bottom:1.5px solid var(--ink);padding-bottom:2px}
 
   /* контакты */
@@ -242,8 +244,8 @@
 
   <section id="projects" style="padding-top:0">
     <div class="wrap">
-      <div class="section-head reveal"><div><span class="eyebrow">Проекты</span><h2>Интернет-<em class="marble">магазины</em></h2></div><span class="muted">Нажмите, чтобы открыть живой сайт</span></div>
-      <div class="grid">
+      <div class="section-head reveal"><div><span class="eyebrow">Проекты</span><h2>Сайты для <em class="marble">бизнеса</em></h2></div><span class="muted">5 проектов · нажмите, чтобы открыть живой сайт</span></div>
+      <div class="grid projects">
         <a class="card reveal" href="motorika/index.html">
           <div class="card-img"><img src="motorika/img/hero.webp" alt="Сайт автосалона МОТОРИКА" loading="lazy"></div>
           <div class="card-body"><h3>МОТОРИКА</h3><span class="muted">Дилерский центр премиальных автомобилей</span>
@@ -254,6 +256,24 @@
           <div class="card-img"><img src="mirra/img/store.webp" alt="Сайт магазина одежды MIRRA" loading="lazy"></div>
           <div class="card-body"><h3>MIRRA</h3><span class="muted">Магазин одежды из натуральных тканей</span>
             <div class="tags"><span>Журнальный стиль</span><span>Размеры</span><span>Промокоды</span><span>Бонусная программа</span><span>Личный кабинет</span></div>
+            <span class="open">Открыть сайт →</span></div>
+        </a>
+        <a class="card reveal" href="oliva/index.html">
+          <div class="card-img"><img src="oliva/img/hero.webp" alt="Сайт ресторана ОЛИВА" loading="lazy"></div>
+          <div class="card-body"><h3>ОЛИВА</h3><span class="muted">Ресторан и доставка: онлайн-заказ из меню</span>
+            <div class="tags"><span>Меню с ценами</span><span>Онлайн-заказ</span><span>Бронь стола</span><span>Промокоды</span></div>
+            <span class="open">Открыть сайт →</span></div>
+        </a>
+        <a class="card reveal" href="blackink/index.html">
+          <div class="card-img"><img src="blackink/img/hero.webp" alt="Сайт тату-студии BLACK INK" loading="lazy"></div>
+          <div class="card-body"><h3>BLACK INK</h3><span class="muted">Тату-студия: эскизы, мастера, онлайн-запись</span>
+            <div class="tags"><span>Эскизы и цены</span><span>Запись с предоплатой</span><span>Мастера</span></div>
+            <span class="open">Открыть сайт →</span></div>
+        </a>
+        <a class="card reveal" href="volt/index.html">
+          <div class="card-img"><img src="volt/img/hero.webp" alt="Сайт бренда спортивного питания VOLT" loading="lazy"></div>
+          <div class="card-body"><h3>VOLT</h3><span class="muted">Бренд спортивного питания: магазин и калькулятор белка</span>
+            <div class="tags"><span>Выбор вкуса</span><span>Калькулятор белка</span><span>Промокоды</span></div>
             <span class="open">Открыть сайт →</span></div>
         </a>
       </div>

@@ -1,0 +1,91 @@
+/* VOLT — светлый спортивный: белый, графит и неоново-лаймовый акцент */
+:root{
+  --bg:#f3f3ef;--surface:#ffffff;--surface-2:#e8e8e2;--text:#111112;--muted:#6b6c70;
+  --line:rgba(17,17,18,.1);--line-strong:rgba(17,17,18,.24);
+  --accent:#111112;--accent-hover:#2a2a2c;--on-accent:#d4ff3a;--accent-soft:rgba(212,255,58,.35);
+  --lime:#d4ff3a;--star:#111112;--input-bg:#fff;--tag-bg:#d4ff3a;--tag-text:#111112;--fav-bg:rgba(255,255,255,.85);
+  --header-bg:rgba(243,243,239,.9);--topbar-bg:#d4ff3a;--topbar-text:#111112;--footer-bg:#111112;
+  --loyalty-bg:linear-gradient(135deg,#111112 0%,#2a2a2c 60%,#9fc21a 160%);
+  --shadow:0 18px 40px rgba(0,0,0,.12);
+  --radius:20px;--radius-btn:14px;--radius-input:12px;--radius-tag:8px;
+  --card-ratio:1/1;--product-ratio:1/1;
+  --font-head:'Russo One',Impact,sans-serif;--font-logo:'Russo One',sans-serif;--font-price:'Russo One',sans-serif;--font-body:'Manrope',system-ui,sans-serif;
+  --head-weight:400;--head-spacing:0;--logo-spacing:.04em;
+}
+h1,h2{text-transform:uppercase}
+h1 em,h2 em{font-style:normal;background:var(--lime);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.logo{font-size:1.35rem}
+.logo small{font:700 .62rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);align-self:flex-end;margin-bottom:4px}
+.logo-bolt{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--text);font-size:1rem;filter:none}
+.topbar .wrap{font-weight:700}
+.status{background:var(--lime);color:var(--text)}
+.chip.active{background:var(--text);color:var(--lime)}
+.card{border:0;box-shadow:0 1px 0 var(--line)}
+.card-img{background:#fff}
+.product-img{background:#fff}
+.accent-text{color:var(--text);background:var(--lime);padding:0 4px;border-radius:4px}
+.perks li::before{background:var(--lime);box-shadow:inset 0 0 0 5px var(--lime),inset 0 0 0 9px var(--text)}
+#site-footer{color:#e8e8e2}
+#site-footer .muted,#site-footer .footer-note{color:#9a9b9e}
+#site-footer a:hover{color:var(--lime)}
+.success-mark{background:var(--lime);color:var(--text)}
+
+/* hero */
+.hero{position:relative;display:grid;background:var(--text);color:#fff;overflow:hidden;border-radius:0 0 32px 32px}
+@media(min-width:960px){.hero{grid-template-columns:1.05fr .95fr;min-height:min(84vh,760px)}}
+.hero-text{padding:56px 16px 48px;display:flex;flex-direction:column;justify-content:center}
+@media(min-width:768px){.hero-text{padding:80px 32px 64px 48px}}
+@media(min-width:1280px){.hero-text{padding-left:calc((100vw - 1240px) / 2 + 32px)}}
+.hero h1{font-size:clamp(2.6rem,6.6vw,5.2rem);line-height:.98;margin-bottom:20px}
+.hero h1 em{color:var(--text)}
+.hero p.lead{max-width:500px;font-size:1.08rem;color:#c8c9cc;margin-bottom:28px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn{background:var(--lime);color:var(--text);border-color:var(--lime)}
+.hero .btn:hover{background:#e3ff7a;border-color:#e3ff7a}
+.hero .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff}
+.hero-img{position:relative;min-height:360px}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--text) 0%,rgba(17,17,18,0) 35%)}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:40px}
+.hero-stats b{display:block;font:400 1.8rem var(--font-head);color:var(--lime)}
+.hero-stats span{font-size:.85rem;color:#a7a8ab}
+
+/* бегущая лента */
+.ticker{overflow:hidden;background:var(--lime);padding:14px 0;transform:rotate(-1.5deg);margin:28px -10px 0}
+.ticker div{display:flex;gap:40px;width:max-content;animation:tick 26s linear infinite;font:400 1.3rem var(--font-head);text-transform:uppercase}
+.ticker span::after{content:"⚡";margin-left:40px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* категории */
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:900px){.cats{grid-template-columns:repeat(5,1fr)}}
+.cat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:16px;border-radius:var(--radius);background:#fff;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.cat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.cat:hover img{transform:scale(1.06)}
+.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.7))}
+.cat span{position:relative;z-index:1;color:#fff;font:400 1.15rem var(--font-head);text-transform:uppercase}
+
+/* калькулятор белка */
+.calc-box{display:grid;gap:24px;padding:28px 20px;border-radius:28px;background:var(--text);color:#fff}
+@media(min-width:900px){.calc-box{grid-template-columns:1.1fr 1fr;padding:48px;align-items:center}}
+.calc-box .form label{color:#c8c9cc}
+.calc-box select{background:#1d1d1f;color:#fff;border-color:rgba(255,255,255,.2)}
+.calc-box input[type=range]{accent-color:var(--lime)}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc-out div{padding:18px;border-radius:16px;background:#1d1d1f}
+.calc-out b{display:block;font:400 clamp(1.4rem,3vw,2rem) var(--font-head);color:var(--lime)}
+.calc-out span{font-size:.85rem;color:#a7a8ab}
+.calc-out .wide{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.calc-out .wide .btn{background:var(--lime);color:var(--text);border-color:var(--lime)}
+
+/* о бренде */
+.brand{display:grid;gap:36px;align-items:center}
+@media(min-width:960px){.brand{grid-template-columns:1fr 1fr;gap:64px}}
+.brand img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius)}
+.pros{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pros div{padding:16px;border-radius:16px;background:#fff}
+.pros b{display:block;font:400 1.1rem var(--font-head);margin-bottom:4px}
+.pros span{font-size:.88rem;color:var(--muted)}
+html,body{overflow-x:clip}

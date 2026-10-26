@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOLT — спортивное питание</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="theme.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'8'%20fill%3D'%23111112'%2F%3E%3Ctext%20x%3D'16'%20y%3D'23'%20font-size%3D'19'%20font-family%3D'Arial%20Black'%20font-weight%3D'700'%20fill%3D'%23d4ff3a'%20text-anchor%3D'middle'%3EV%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body data-page="home">
+<header id="site-header"></header>
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow" style="color:#d4ff3a">Спортивное питание · сделано в России</span>
+      <h1>Заряд на каждую <em>тренировку</em></h1>
+      <p class="lead">Протеин, креатин и витамины с чистым составом: без аспартама, без красителей, с протоколом лабораторного теста на каждую партию.</p>
+      <div class="hero-actions">
+        <a class="btn" href="catalog.html">В каталог</a>
+        <a class="btn btn-ghost" href="#calc">Посчитать белок</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>24 г</b><span>белка в порции</span></div>
+        <div><b>0 г</b><span>сахара</span></div>
+        <div><b>1 день</b><span>доставка по Москве</span></div>
+      </div>
+    </div>
+    <div class="hero-img"><img src="img/hero.webp" alt="Атлет с гантелью в зале"></div>
+  </section>
+  <div class="ticker" aria-hidden="true"><div><span>Протеин</span><span>Изолят</span><span>Креатин</span><span>Гейнер</span><span>BCAA</span><span>Омега-3</span><span>Батончики</span><span>Протеин</span><span>Изолят</span><span>Креатин</span><span>Гейнер</span><span>BCAA</span><span>Омега-3</span><span>Батончики</span></div></div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><div><span class="eyebrow">Категории</span><h2>Под любую <em>цель</em></h2></div><a class="link" href="catalog.html">Весь каталог →</a></div>
+      <div class="cats reveal">
+        <a class="cat" href="catalog.html?cat=Протеин"><img src="img/whey.webp" alt="" loading="lazy"><span>Протеин</span></a>
+        <a class="cat" href="catalog.html?cat=Гейнеры"><img src="img/gainer.webp" alt="" loading="lazy"><span>Гейнеры</span></a>
+        <a class="cat" href="catalog.html?cat=Креатин"><img src="img/creatine.webp" alt="" loading="lazy"><span>Креатин</span></a>
+        <a class="cat" href="catalog.html?cat=Витамины"><img src="img/omega.webp" alt="" loading="lazy"><span>Витамины</span></a>
+        <a class="cat" href="catalog.html?cat=Батончики"><img src="img/bar.webp" alt="" loading="lazy"><span>Батончики</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal"><div><span class="eyebrow">Бестселлеры</span><h2>Берут чаще всего</h2></div><a class="link" href="catalog.html">Смотреть всё →</a></div>
+      <div class="grid" id="featured"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" id="calc">
+    <div class="wrap">
+      <div class="calc-box reveal">
+        <div>
+          <span class="eyebrow" style="color:#d4ff3a">Калькулятор</span>
+          <h2 style="margin-bottom:24px">Сколько белка вам нужно</h2>
+          <form class="form" id="calc-form" onsubmit="return false">
+            <label>Ваш вес: <b id="calc-kg"></b><input type="range" name="kg" min="45" max="130" value="75"></label>
+            <label>Цель<select name="goal"><option value="1.6">Поддерживать форму</option><option value="2" selected>Набрать мышечную массу</option><option value="2.2">Сушка</option></select></label>
+          </form>
+        </div>
+        <div class="calc-out">
+          <div><b id="calc-total"></b><span>белка в день</span></div>
+          <div><b id="calc-shakes"></b><span>протеина в день — остальное из еды</span></div>
+          <div class="wide"><span>≈ <b id="calc-month" style="display:inline;font-size:1.3rem"></b> на протеин в месяц</span><a class="btn btn-sm" href="product.html?id=whey">Выбрать протеин</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap brand">
+      <img class="reveal" src="img/athlete.webp" alt="Девушка поднимает штангу" loading="lazy">
+      <div class="reveal">
+        <span class="eyebrow">О бренде</span>
+        <h2>Честный состав — <em>на банке</em></h2>
+        <p class="muted">VOLT придумали два тренера из Москвы, которым надоело переплачивать за импорт с непонятным составом. Мы производим всё в России, публикуем лабораторные тесты каждой партии и подбираем вкусы вместе с клиентами.</p>
+        <div class="pros">
+          <div><b>Без аспартама</b><span>Сладость — сукралоза и стевия</span></div>
+          <div><b>Тест партии</b><span>Протокол лаборатории по QR</span></div>
+          <div><b>Обмен вкуса</b><span>Если не понравился — заменим</span></div>
+          <div><b>ISO 22000</b><span>Сертифицированное производство</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal"><div><span class="eyebrow">Акции</span><h2>Новинки и скидки</h2></div><a class="link" href="news.html">Все акции →</a></div>
+      <div class="news-grid" id="news-latest"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="reveal"><span class="eyebrow">Отзывы</span><h2>Что говорят атлеты</h2></div>
+      <div id="reviews"></div>
+    </div>
+  </section>
+</main>
+<footer id="site-footer"></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
