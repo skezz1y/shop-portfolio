@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог — MIRRA</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="theme.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231f1b17'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Georgia' fill='%23f5f0e8' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="catalog">
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head"><span class="eyebrow">Каталог</span><h1>Вся <em>коллекция</em></h1><p>Натуральные ткани, примерка перед оплатой и возврат в течение 30 дней.</p></div>
+  <div class="catalog-layout">
+    <aside id="filters" aria-label="Фильтры"></aside>
+    <div>
+      <div class="catalog-bar">
+        <span class="muted" id="catalog-count"></span>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" id="filters-toggle">Фильтры</button>
+          <select id="sort" aria-label="Сортировка"><option value="popular">Рекомендуем</option><option value="new">Новинки</option><option value="cheap">Сначала дешевле</option><option value="expensive">Сначала дороже</option></select>
+        </div>
+      </div>
+      <div class="grid grid-3" id="catalog-grid"></div>
+    </div>
+  </div>
+</main>
+<footer id="site-footer"></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

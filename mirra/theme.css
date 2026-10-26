@@ -1,0 +1,94 @@
+/* MIRRA — светлая «журнальная» тема: кремовый фон, серифные заголовки, терракотовый акцент */
+:root{
+  --bg:#f5f0e8;--surface:#fbf8f3;--surface-2:#ece5da;--text:#1f1b17;--muted:#7a7067;
+  --line:rgba(31,27,23,.1);--line-strong:rgba(31,27,23,.24);
+  --accent:#a8502c;--accent-hover:#8e4123;--on-accent:#fff;--accent-soft:rgba(168,80,44,.12);
+  --star:#c08a3e;--input-bg:#fff;--tag-bg:#f5f0e8;--tag-text:#1f1b17;--fav-bg:rgba(245,240,232,.8);
+  --header-bg:rgba(245,240,232,.88);--topbar-bg:#1f1b17;--topbar-text:#f5f0e8;--footer-bg:#ece5da;
+  --loyalty-bg:linear-gradient(135deg,#a8502c 0%,#5c2a16 100%);
+  --shadow:0 18px 44px rgba(60,40,20,.14);
+  --radius:4px;--radius-btn:0;--radius-input:0;--radius-tag:0;
+  --card-ratio:3/4;--product-ratio:4/5;
+  --font-head:'Cormorant Garamond',Georgia,serif;--font-logo:'Cormorant Garamond',Georgia,serif;--font-price:'Manrope',system-ui,sans-serif;--font-body:'Manrope',system-ui,sans-serif;
+  --head-weight:500;--head-spacing:-.01em;--logo-spacing:.22em;
+}
+h1,h2{font-weight:500}
+h1 em,h2 em{font-style:italic;color:var(--accent)}
+.logo{font-size:1.6rem;font-weight:600}
+.logo-dot{color:var(--accent);margin-left:-.2em}
+.btn{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;padding:16px 28px}
+.btn-sm{padding:11px 18px;font-size:.72rem}
+.card{border:0;background:transparent}
+.card:hover{box-shadow:none;transform:none}
+.card-body{padding:14px 2px 0}
+.card-body h3{font-family:var(--font-body);font-weight:500;font-size:.98rem}
+.card-body .btn{align-self:flex-start;background:transparent;color:var(--text);border-color:var(--line-strong)}
+.card-body .btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+.price{font-size:1rem;font-weight:600}
+.tag{font-weight:600;letter-spacing:.1em}
+.chip{border-radius:0}
+.chip.active{background:var(--text)}
+.news-card{border:0;background:transparent}
+.news-card:hover{box-shadow:none}
+.news-body{padding:16px 0}
+.news-body h3{font-family:var(--font-head);font-size:1.5rem;font-weight:500}
+.review{background:var(--surface);border:0}
+.review blockquote{font-family:var(--font-head);font-size:1.25rem;line-height:1.4}
+.section-head h2,.page-head h1{font-weight:500}
+
+/* hero */
+.hero{display:grid;gap:32px;padding-top:32px;padding-bottom:48px;align-items:center}
+@media(min-width:900px){.hero{grid-template-columns:1fr 1fr;gap:64px;padding-top:56px;padding-bottom:72px}}
+.hero h1{font-size:clamp(3rem,8vw,6.2rem);line-height:.95;margin-bottom:24px}
+.hero .lead{font-size:1.08rem;color:var(--muted);max-width:440px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;animation:heroZoom 12s ease-out both}
+@keyframes heroZoom{from{transform:scale(1.1)}}
+.hero-img figcaption{position:absolute;right:16px;bottom:16px;background:var(--bg);padding:12px 16px;font-size:.82rem;max-width:220px}
+.hero-img figcaption b{display:block;font:500 1.2rem var(--font-head)}
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;background:var(--surface)}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 30s linear infinite;font:italic 500 1.4rem var(--font-head)}
+.marquee-track span::before{content:"✦";color:var(--accent);margin-right:48px;font-style:normal;font-size:.9rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* категории */
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:900px){.cats{grid-template-columns:repeat(4,1fr);gap:20px}}
+.cat-tile{position:relative;display:block;aspect-ratio:3/4;overflow:hidden}
+.cat-tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.cat-tile:hover img{transform:scale(1.06)}
+.cat-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(31,27,23,.6))}
+.cat-tile span{position:absolute;left:16px;bottom:14px;z-index:1;color:#fff;font:500 clamp(1.3rem,2.5vw,1.8rem) var(--font-head)}
+
+/* о бренде */
+.about{display:grid;gap:40px;align-items:center}
+@media(min-width:960px){.about{grid-template-columns:1.1fr 1fr;gap:80px}}
+.about-imgs{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;align-items:end}
+.about-imgs img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.about-imgs img:last-child{aspect-ratio:3/5;margin-bottom:40px}
+.about blockquote{margin:24px 0;padding-left:20px;border-left:2px solid var(--accent);font:italic 500 1.4rem/1.4 var(--font-head)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;border-top:1px solid var(--line);padding-top:24px}
+.nums b{display:block;font:500 clamp(1.8rem,4vw,2.6rem) var(--font-head);color:var(--accent)}
+.nums span{font-size:.85rem;color:var(--muted)}
+
+/* промо-баннер */
+.promo-band{display:grid;background:var(--text);color:var(--bg)}
+@media(min-width:900px){.promo-band{grid-template-columns:1fr 1fr}}
+.promo-band img{width:100%;height:100%;min-height:320px;object-fit:cover}
+.promo-band-text{padding:40px 24px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+@media(min-width:900px){.promo-band-text{padding:64px}}
+.promo-band-text .eyebrow{color:#e0a383}
+.promo-band-text h2{font-size:clamp(2rem,4.5vw,3.4rem)}
+.promo-band-text p{color:rgba(245,240,232,.7);max-width:420px}
+.promo-band code{display:inline-block;margin:8px 0 24px;padding:10px 18px;border:1px dashed #e0a383;font:600 1.1rem var(--font-body);letter-spacing:.2em;color:#e0a383}
+.promo-band .btn{background:var(--bg);color:var(--text);border-color:var(--bg)}
+
+/* бутик */
+.boutique{display:grid;gap:32px;align-items:center}
+@media(min-width:900px){.boutique{grid-template-columns:1fr 1fr;gap:64px}}
+.boutique img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.boutique dl{display:grid;gap:16px;margin:24px 0}
+.boutique dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.boutique dd{margin:2px 0 0;font:500 1.3rem var(--font-head)}
+@media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr 1fr;gap:20px 12px}.card-body h3{font-size:.88rem}.card-meta{font-size:.72rem}.card-body .btn{padding:9px 12px;font-size:.66rem}.fav{width:34px;height:34px}}

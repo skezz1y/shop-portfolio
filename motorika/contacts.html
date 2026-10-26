@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Контакты — МОТОРИКА</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="theme.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5a1f'/%3E%3Ctext x='16' y='23' font-size='18' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<body data-page="contacts">
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head"><span class="eyebrow">Контакты</span><h1>Ждём в шоуруме</h1><p>Бесплатная парковка на 80 мест, зарядная станция для электромобилей и кофе-бар для гостей.</p></div>
+  <div class="contacts-grid">
+    <div>
+      <div class="contact-list">
+        <div class="contact-item"><span class="muted small">Адрес</span><b>Екатеринбург, ул. Металлургов, 87</b><span class="muted small">5 минут от ТРЦ «Мега», съезд с ЕКАД на Металлургов</span></div>
+        <div class="contact-item"><span class="muted small">Отдел продаж</span><b><a href="tel:+73430007717">+7 (343) 000-77-17</a></b><span class="muted small">Ежедневно 9:00–21:00</span></div>
+        <div class="contact-item"><span class="muted small">Сервис и запись на ТО</span><b><a href="tel:+73430007718">+7 (343) 000-77-18</a></b><span class="muted small">Пн–Сб 8:00–20:00</span></div>
+        <div class="contact-item"><span class="muted small">Почта</span><b><a href="mailto:sales@motorika-auto.ru">sales@motorika-auto.ru</a></b></div>
+        <div class="contact-item"><span class="muted small">Мессенджеры</span><div class="messengers"><a class="btn btn-ghost btn-sm" href="#" onclick="return false">Telegram</a><a class="btn btn-ghost btn-sm" href="#" onclick="return false">WhatsApp</a><a class="btn btn-ghost btn-sm" href="#" onclick="return false">ВКонтакте</a></div></div>
+      </div>
+      <h3 style="margin-top:32px">Напишите нам</h3>
+      <form class="form" data-demo="Сообщение отправлено">
+        <label>Имя<input name="name" required></label>
+        <label>Телефон<input name="phone" type="tel" required placeholder="+7"></label>
+        <label>Тема<select name="topic"><option>Покупка автомобиля</option><option>Trade-in</option><option>Кредит</option><option>Сервис</option><option>Другое</option></select></label>
+        <label>Сообщение<textarea name="msg" rows="3"></textarea></label>
+        <label class="check"><input type="checkbox" required> Согласен на обработку персональных данных</label>
+        <button class="btn">Отправить</button>
+      </form>
+    </div>
+    <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?ll=60.5085%2C56.8215&z=15&pt=60.5085%2C56.8215%2Cpm2rdl" title="Карта проезда" loading="lazy" allowfullscreen></iframe></div>
+  </div>
+  <section class="section" style="padding-top:24px">
+    <h2>Частые вопросы</h2>
+    <div class="faq">
+      <div class="faq-item" data-faq><button>Можно ли посмотреть автомобиль на подъёмнике?</button><div>Да. Любую машину из наличия поднимем на подъёмник в нашем сервисе и покажем результаты диагностики. Можно приехать со своим механиком.</div></div>
+      <div class="faq-item" data-faq><button>Как работает онлайн-бронь?</button><div>Вы вносите 50 000 ₽, автомобиль снимается с продажи на 5 дней. Если на осмотре что-то не понравится — возвращаем предоплату полностью.</div></div>
+      <div class="faq-item" data-faq><button>Принимаете кредитные автомобили в trade-in?</button><div>Да, гасим остаток кредита за вас и учитываем разницу в новой сделке.</div></div>
+      <div class="faq-item" data-faq><button>Доставляете в другие города?</button><div>Доставляем автовозом по всей России. Стоимость по Уралу — от 15 000 ₽, в другие регионы считаем индивидуально.</div></div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <h2>Отзывы</h2>
+    <div id="reviews"></div>
+  </section>
+</main>
+<footer id="site-footer"></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
