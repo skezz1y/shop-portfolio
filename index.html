@@ -3,29 +3,186 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Портфолио — интернет-магазины</title>
-<meta name="robots" content="noindex,nofollow">
+<title>Портфолио — интернет-магазины под ключ</title>
+<meta name="description" content="Разработка сайтов и интернет-магазинов: дизайн, вёрстка, интерактив. Примеры: автосалон МОТОРИКА и магазин одежды MIRRA.">
+<meta property="og:title" content="Портфолио — интернет-магазины под ключ">
+<meta property="og:image" content="media/poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#f4f4f2;--text:#18181a;--muted:#6b6b70;--card:#fff;--line:rgba(0,0,0,.08)}
-  @media(prefers-color-scheme:dark){:root{--bg:#111113;--text:#f1f1ef;--muted:#9a9aa0;--card:#1a1a1d;--line:rgba(255,255,255,.08)}}
-  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
-  main{max-width:1100px;margin:0 auto;padding:56px 16px}
-  h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 8px;letter-spacing:-.02em}p{color:var(--muted);margin:0 0 40px}
+  :root{--bg:#07080a;--surface:#121316;--text:#f3f2ef;--muted:#9a9ca4;--line:rgba(255,255,255,.1);--accent:#ff5a1f;--tg:#229ed9}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 80% 0%,rgba(255,90,31,.16),transparent 45%),radial-gradient(circle at 0% 60%,rgba(80,100,255,.08),transparent 40%)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+  @media(min-width:768px){.wrap{padding:0 32px}}
+  h1,h2,h3{font-family:Unbounded,sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:0}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .muted{color:var(--muted)}
+
+  /* кнопки связи */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:700;font-size:.98rem;white-space:nowrap;transition:transform .15s,box-shadow .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-phone{background:var(--accent);color:#fff;box-shadow:0 10px 30px rgba(255,90,31,.35)}
+  .btn-phone:hover{box-shadow:0 14px 40px rgba(255,90,31,.5)}
+  .btn-tg{background:var(--tg);color:#fff;box-shadow:0 10px 30px rgba(34,158,217,.3)}
+  .btn-tg:hover{box-shadow:0 14px 40px rgba(34,158,217,.45)}
+  .btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.04)}
+
+  /* шапка */
+  header{position:sticky;top:0;z-index:20;background:rgba(7,8,10,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .head{display:flex;align-items:center;gap:12px;height:68px}
+  .logo{font-family:Unbounded,sans-serif;font-weight:600;font-size:1.05rem;display:flex;align-items:center;gap:10px}
+  .logo i{width:30px;height:30px;border-radius:9px;background:var(--accent);display:grid;place-items:center;font-style:normal;font-size:.9rem}
+  .head-actions{margin-left:auto;display:flex;gap:8px}
+  .head-actions .btn{padding:10px 14px;font-size:.88rem;border-radius:12px}
+  .head-actions .label{display:none}
+  @media(min-width:720px){.head-actions .label{display:inline}}
+
+  /* hero + видео */
+  .hero{padding-top:48px;padding-bottom:32px}
+  .hero h1{font-size:clamp(2rem,6vw,4rem);max-width:900px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{max-width:620px;font-size:1.1rem;color:var(--muted);margin:18px 0 28px}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .video{position:relative;margin:40px 0 0;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+  .video video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+  .video-play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.45));border:0;cursor:pointer;color:#fff;font:inherit}
+  .video-play span{display:flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);font-weight:700;border:1px solid rgba(255,255,255,.25);transition:transform .2s,background .2s}
+  .video-play:hover span{transform:scale(1.05);background:rgba(255,90,31,.85)}
+  .video-play svg{width:22px;height:22px}
+  .video.playing .video-play{display:none}
+
+  /* проекты */
+  section{padding:72px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+  .section-head h2{font-size:clamp(1.6rem,4vw,2.5rem)}
   .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
-  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;color:inherit;text-decoration:none;transition:transform .25s,box-shadow .25s}
-  a.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
-  a.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-  .body{padding:20px 22px}.body h2{margin:0 0 4px;font-size:1.3rem}.body span{color:var(--muted);font-size:.92rem}
+  .card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(255,255,255,.2)}
+  .card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+  .card-body{padding:22px}
+  .card-body h3{font-size:1.3rem;margin-bottom:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tags span{font-size:.8rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .open{display:inline-flex;margin-top:16px;color:var(--accent);font-weight:700}
+
+  /* контакты */
+  .contact{display:grid;gap:28px;padding:36px 24px;border-radius:26px;border:1px solid var(--line);background:radial-gradient(circle at 90% 10%,rgba(255,90,31,.25),transparent 50%),var(--surface)}
+  @media(min-width:900px){.contact{grid-template-columns:1.1fr 1fr;align-items:center;padding:56px}}
+  .contact h2{font-size:clamp(1.8rem,4.5vw,3rem)}
+  .contact h2 em{font-style:normal;color:var(--accent)}
+  .contact p{color:var(--muted);margin:14px 0 0;max-width:460px}
+  .contact-cards{display:grid;gap:14px}
+  .contact-card{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.04);transition:transform .2s,border-color .2s,background .2s}
+  .contact-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.07)}
+  .contact-card .ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;flex:none;color:#fff}
+  .contact-card .ic svg{width:26px;height:26px}
+  .ic-phone{background:linear-gradient(135deg,#ff7a45,#e5400a);box-shadow:0 0 30px rgba(255,90,31,.45)}
+  .ic-tg{background:linear-gradient(135deg,#37bbfe,#007dbb);box-shadow:0 0 30px rgba(34,158,217,.45)}
+  .contact-card small{display:block;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .contact-card b{display:block;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(1rem,4.4vw,1.6rem);white-space:nowrap}
+  .contact-card .arrow{margin-left:auto;color:var(--muted);font-size:1.4rem}
+
+  /* плавающие кнопки на телефоне */
+  .float{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .float .btn{padding:13px 10px;font-size:.92rem}
+  @media(min-width:720px){.float{display:none}}
+  footer{padding:32px 0 96px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  @media(min-width:720px){footer{padding-bottom:40px}}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
-<main>
-  <h1>Интернет-магазины</h1>
-  <p>Два концепта: дилерский центр премиальных автомобилей и магазин одежды. Каталог с фильтрами, карточка товара, корзина, личный кабинет, акции, отзывы и контакты.</p>
-  <div class="grid">
-    <a class="card" href="motorika/index.html"><img src="motorika/img/hero.webp" alt=""><div class="body"><h2>МОТОРИКА</h2><span>Автосалон · тёмная тема · бронь онлайн, кредитный калькулятор, тест-драйв</span></div></a>
-    <a class="card" href="mirra/index.html"><img src="mirra/img/store.webp" alt=""><div class="body"><h2>MIRRA</h2><span>Одежда · журнальный стиль · размеры, промокоды, бонусная программа</span></div></a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 3.2 2.4 10.6c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.7.4.9.9.9.4 0 .6-.2.9-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.5-1.5ZM9 14.2l8.6-7.6c.4-.3-.1-.5-.6-.2L6.4 13.1"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap head">
+    <a class="logo" href="#top"><i>W</i>Портфолио</a>
+    <div class="head-actions">
+      <a class="btn btn-phone" href="tel:+79938830689" aria-label="Позвонить"><svg><use href="#i-phone"/></svg><span class="label">8 993 883 06 89</span></a>
+      <a class="btn btn-tg" href="https://t.me/h8evr" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#i-tg"/></svg><span class="label">@h8evr</span></a>
+    </div>
   </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <span class="eyebrow">Веб-разработка · под ключ</span>
+    <h1>Сайты и интернет-магазины, которые <em>продают</em></h1>
+    <p>Дизайн, вёрстка и интерактив: каталог с фильтрами, корзина, личный кабинет, акции, отзывы и контакты с картой. Ниже — два проекта и короткий ролик о них.</p>
+    <div class="hero-actions">
+      <a class="btn btn-phone" href="tel:+79938830689"><svg><use href="#i-phone"/></svg>Позвонить</a>
+      <a class="btn btn-tg" href="https://t.me/h8evr" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Написать в Telegram</a>
+      <a class="btn btn-ghost" href="#projects">Смотреть проекты</a>
+    </div>
+    <div class="video" id="video">
+      <video src="media/portfolio.mp4" poster="media/poster.jpg" preload="metadata" playsinline></video>
+      <button class="video-play" type="button" aria-label="Смотреть видео"><span><svg><use href="#i-play"/></svg>Смотреть ролик · 45 с</span></button>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Проекты</span><h2>Интернет-магазины</h2></div><span class="muted">Нажмите, чтобы открыть живой сайт</span></div>
+      <div class="grid">
+        <a class="card" href="motorika/index.html">
+          <img src="motorika/img/hero.webp" alt="Сайт автосалона МОТОРИКА" loading="lazy">
+          <div class="card-body"><h3>МОТОРИКА</h3><span class="muted">Дилерский центр премиальных автомобилей</span>
+            <div class="tags"><span>Тёмная тема</span><span>Онлайн-бронь</span><span>Кредитный калькулятор</span><span>Тест-драйв</span><span>Личный кабинет</span></div>
+            <span class="open">Открыть сайт →</span></div>
+        </a>
+        <a class="card" href="mirra/index.html">
+          <img src="mirra/img/store.webp" alt="Сайт магазина одежды MIRRA" loading="lazy">
+          <div class="card-body"><h3>MIRRA</h3><span class="muted">Магазин одежды из натуральных тканей</span>
+            <div class="tags"><span>Журнальный стиль</span><span>Размеры</span><span>Промокоды</span><span>Бонусная программа</span><span>Личный кабинет</span></div>
+            <span class="open">Открыть сайт →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <span class="eyebrow">Связаться со мной</span>
+          <h2>Нужен такой <em>сайт?</em></h2>
+          <p>Сделаю лендинг или интернет-магазин для вашего бизнеса. Напишите или позвоните — обсудим задачу и сроки.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact-card" href="tel:+79938830689"><span class="ic ic-phone"><svg><use href="#i-phone"/></svg></span><span><small>Телефон</small><b>8 993 883 06 89</b></span><span class="arrow">→</span></a>
+          <a class="contact-card" href="https://t.me/h8evr" target="_blank" rel="noopener"><span class="ic ic-tg"><svg><use href="#i-tg"/></svg></span><span><small>Telegram</small><b>@h8evr</b></span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<div class="float">
+  <a class="btn btn-phone" href="tel:+79938830689"><svg><use href="#i-phone"/></svg>Позвонить</a>
+  <a class="btn btn-tg" href="https://t.me/h8evr" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Магазины на сайтах вымышленные, фото — Unsplash. Музыка и звуки в ролике синтезированы, без правообладателей.</span>
+    <span>iPhone 3D model by MajdyModels (Sketchfab), CC BY 4.0</span>
+  </div>
+</footer>
+
+<script>
+  // своя кнопка «Смотреть» поверх постера: запускает видео со звуком
+  const box = document.getElementById('video'), v = box.querySelector('video');
+  box.querySelector('.video-play').addEventListener('click', () => { box.classList.add('playing'); v.play(); });
+  v.addEventListener('play', () => { box.classList.add('playing'); v.controls = true; });
+</script>
 </body>
 </html>
